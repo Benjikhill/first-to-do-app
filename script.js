@@ -1,8 +1,13 @@
-// Nur eine Checkbox anklicken!
-
 const allCheckbox = document.querySelector("#all");
 const openCheckbox = document.querySelector("#open");
 const doneCheckbox = document.querySelector("#done");
+
+const addButton = document.querySelector("#add-button");
+const deleteButton = document.querySelector("#delete-button");
+const todoInput = document.querySelector("#todo-input");
+const todoList = document.querySelector("#todo-list");
+
+// Nur eine Checkbox anklicken!
 
 function toggle(checkbox, otherCheckbox, otherCheckbox2) {
   if (checkbox || otherCheckbox || otherCheckbox2) {
@@ -33,27 +38,24 @@ doneCheckbox.addEventListener("change", function () {
 
 // Todo Liste hinzufügen!
 
-const btnAddTodo = document.querySelector("#btn-add-todo");
+function addTodo() {
+  const newTodoText = todoInput.value;
+  if (newTodoText.length < 5) {
+    return;
+  }
 
-btnAddTodo.addEventListener("click", addTodo);
+  todoInput.value = "";
 
-function addTodo(event, randomNumber) {
-  const todoDescription = document.querySelector("#todo-description").value;
-  // const todoDescription = todoField.value;
-  const list = document.querySelector("#todos-list");
+  const newTodoLi = document.createElement("li");
+  newTodoLi.innerText = newTodoText;
 
-  const listEl = document.createElement("li");
-  const listBox = document.createElement("input");
-  checkbox.setAttribute("type", "checkbox");
-  listEl.append("input");
-  // const checkbox = document.createElement("input");
+  const checkBox = document.createElement("input");
+  checkBox.setAttribute("type", "checkbox");
+  newTodoLi.appendChild(checkBox);
 
-  // list.append(checkbox);
-  // const listBr = document.createElement("br");
-  // listEl.innerText = todoDescription;
-  list.append(listEl);
-  //list.append(listBr);
+  todoList.appendChild(newTodoLi);
 }
+addButton.addEventListener("click", addTodo);
 
 // All, Open und Done mit der liste verknüpft!
 

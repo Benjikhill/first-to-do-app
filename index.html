@@ -8,32 +8,36 @@
     <title>Todo-App</title>
   </head>
   <body>
-    <h1>Todo-App</h1>
-    <form onsubmit="return false">
-      <div>
-        <input id="all" type="radio" />
-        <label for="all">All</label>
+    <header><h1>Todo-App</h1></header>
+    <main>
+      <form onsubmit="return false">
+        <div>
+          <input id="todo-input" type="text" placeholder="Whats up?" />
+          <button id="add-button">Add</button>
+        </div>
+        <div>
+          <h2>Filter & Options</h2>
+        </div>
+        <div>
+          <input class="checkb" id="all" type="radio" />
+          <label for="all">All</label>
+          <br />
+          <input class="checkb" id="open" type="radio" />
+          <label for="open">Open</label>
+          <br />
+          <input class="checkb" id="done" type="radio" />
+          <label for="done">Done</label>
+        </div>
         <br />
-        <input id="open" type="radio" />
-        <label for="open">Open</label>
-        <br />
-        <input id="done" type="radio" />
-        <label for="done">Done</label>
-      </div>
-      <br />
-      <br />
-      <button>Remove done Todos</button>
-      <div>
-        <br />
-        <input id="todo-description" type="text" placeholder="Whats up?" />
-        <button id="btn-add-todo">Add</button>
-      </div>
-      <br />
-    </form>
-    <ul id="todos-list">
-      <li><input type="checkbox" />Listeneintrag 1</li>
-      <li><input type="checkbox" />Listeneintrag 2</li>
-    </ul>
+        <button id="delete-button">Remove done Todos</button>
+        <div>
+          <h2>Your Todos</h2>
+        </div>
+        <div>
+          <ul id="todo-list"></ul>
+        </div>
+      </form>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
