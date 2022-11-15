@@ -15,10 +15,59 @@ function toggle(checkbox, otherCheckbox, otherCheckbox2) {
   }
 }
 
-allCheckbox.addEventListener("change", function () {
-  toggle(allCheckbox, openCheckbox);
-});
-allCheckbox.addEventListener("change", function () {
+/*function filterDone() {
+  for (let li of todoList.children) {
+    if (!li.querySelector("input").checked) {
+      li.hidden = true;
+    } else {
+      li.hidden = false;
+    }
+  }
+}
+
+function filterOpen() {
+  for (let li of todoList.children) {
+    if (li.querySelector("input").checked) {
+      li.hidden = true;
+    } else {
+      li.hidden = false;
+    }
+  }
+}*/
+
+function filterTodos(status = "open") {
+  for (let li of todoList.children) {
+    let condition = li.querySelector("input").checked;
+
+    if (status === "done") {
+      condition = !condition;
+    }
+
+    if (condition) {
+      li.hidden = true;
+    } else {
+      li.hidden = false;
+    }
+  }
+}
+
+function removeFilter() {
+  for (let li of todoList.children) {
+    li.hidden = false;
+  }
+}
+
+allCheckbox.addEventListener("change", removeFilter);
+
+openCheckbox.addEventListener("change", () => filterTodos("open"));
+
+doneCheckbox.addEventListener("change", () => filterTodos("done"));
+
+/*allCheckbox.addEventListener("change", function () {
+  //toggle(allCheckbox, openCheckbox);
+  //
+});*/
+/*allCheckbox.addEventListener("change", function () {
   toggle(allCheckbox, doneCheckbox);
 });
 
@@ -34,7 +83,7 @@ doneCheckbox.addEventListener("change", function () {
 });
 doneCheckbox.addEventListener("change", function () {
   toggle(doneCheckbox, openCheckbox);
-});
+});*/
 
 // Todo Liste hinzufügen!
 
@@ -47,19 +96,15 @@ function addTodo() {
   todoInput.value = "";
 
   const newTodoLi = document.createElement("li");
-  newTodoLi.innerText = newTodoText;
+
+  const label = document.createElement("label");
+  label.innerText = newTodoText;
+  label.className = "meine-klasse";
 
   const checkBox = document.createElement("input");
   checkBox.setAttribute("type", "checkbox");
-  newTodoLi.appendChild(checkBox);
+  newTodoLi.append(checkBox, label);
 
   todoList.appendChild(newTodoLi);
 }
 addButton.addEventListener("click", addTodo);
-
-// All, Open und Done mit der liste verknüpft!
-
-function listConnect() {
-  if (list.checked === true) {
-  }
-}
