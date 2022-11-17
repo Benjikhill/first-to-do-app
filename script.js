@@ -7,15 +7,15 @@ const deleteButton = document.querySelector("#delete-button");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 
-// Nur eine Checkbox anklicken!
+// Filtern der Optionen
 
-function toggle(checkbox, otherCheckbox, otherCheckbox2) {
+/*function toggle(checkbox, otherCheckbox, otherCheckbox2) {
   if (checkbox || otherCheckbox || otherCheckbox2) {
     otherCheckbox.checked = false;
   }
 }
 
-/*function filterDone() {
+function filterDone() {
   for (let li of todoList.children) {
     if (!li.querySelector("input").checked) {
       li.hidden = true;
@@ -108,3 +108,15 @@ function addTodo() {
   todoList.appendChild(newTodoLi);
 }
 addButton.addEventListener("click", addTodo);
+
+// löschen der erledigten Todos
+
+function deleteDoneTodos() {
+  for (let li of todoList.children) {
+    if (li.querySelector("input").checked) {
+      li.remove();
+    }
+  }
+}
+
+deleteButton.addEventListener("click", deleteDoneTodos);
