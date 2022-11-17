@@ -36,6 +36,7 @@ button {
   border-radius: 5px;
   padding: 0px 5px 0px 5px;
   box-shadow: 2px 2px 0px #59c1bd;
+  cursor: pointer;
 }
 main {
   background-color: #cff5e7;
@@ -47,7 +48,7 @@ form {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 3rem;
+  margin: 3rem 3rem 5rem 3rem;
 }
 h2 {
   font-size: 2.5rem;
